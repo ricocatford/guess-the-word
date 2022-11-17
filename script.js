@@ -32,9 +32,9 @@ async function getRightWord(allWords) {
 
                 if (currentMeaning.antonyms.length > 0 || currentMeaning.synonyms.length > 0) {
                     console.log("We got one!");
-
+                    console.log(currentMeaning.definitions);
                     return {
-                        word: word, 
+                        word: word,
                         antonyms: currentMeaning.antonyms,
                         synonyms: currentMeaning.synonyms
                     };
@@ -52,14 +52,15 @@ async function start() {
     while (chosenWordForGame === null) {
         const randomWords = await getRandomWords(10);
         chosenWordForGame = await getRightWord(randomWords);
-        // Start game when word has been found.
     }
-
     console.log(chosenWordForGame);
+    startGame(chosenWordForGame);
 }
 
-function startGame() {
-    // Set word
+function startGame(wordForGame) {
+    $("h1").text(wordForGame.word);
+    $("#antonyms").text("Antonyms: " + wordForGame.antonyms);
+    $("#synonyms").text("Synonyms: " + wordForGame.synonyms);
 }
 
 start();
