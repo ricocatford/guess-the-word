@@ -1,0 +1,6 @@
+- Get word
+- Split word
+- Replace random characters of the word with "_"
+- Display Word (with hidden characters) to User
+- Let user choose characters
+- If the right character is chosen, display it to User.

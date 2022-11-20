@@ -5,7 +5,7 @@ async function getRandomWords(numberOfWords) {
     const result = 
         await fetch(url, {method: "GET"})
         .then(response => response.json());
-    
+
     return result;
 }
 
@@ -15,35 +15,27 @@ async function searchDictionary(word) {
     const result = 
         await fetch(url, {method: "GET"})
         .then(response => response.json());
-    
+
     return result;
 }
 
-async function getRightWord(allWords) {
+async function getExistingWord(allWords) {
+    
     for (let word of allWords) {
-        const foundWordDictionary = await searchDictionary(word);
-
-        for (let i = 0; i < foundWordDictionary.length; i++) {
-            const currentWordDictionary = foundWordDictionary[i];
-            const currentWordMeanings = currentWordDictionary.meanings;
-
-            for (let j = 0; j < currentWordMeanings.length; j++) {
-                const currentMeaning = currentWordMeanings[j];
-
-                if (currentMeaning.antonyms.length > 0 || currentMeaning.synonyms.length > 0) {
-                    console.log("We got one!");
-                    console.log(currentMeaning.definitions);
-                    return {
-                        word: word,
-                        antonyms: currentMeaning.antonyms,
-                        synonyms: currentMeaning.synonyms
-                    };
-                }
-            }
+        const foundWordInDictionary = await searchDictionary(word);
+        if (foundWordInDictionary && foundWordInDictionary.title != "No Definitions Found") {
+            return foundWordInDictionary;
         }
-        
     }
     return null;
+}
+
+function splitWordIntoCharacters(word) {
+    const characters = [];
+    for (let i = 0; i < word.length; i++) {
+        characters.push(word[i]);
+    };
+    console.log(characters);
 }
 
 async function start() {
@@ -51,16 +43,14 @@ async function start() {
 
     while (chosenWordForGame === null) {
         const randomWords = await getRandomWords(10);
-        chosenWordForGame = await getRightWord(randomWords);
+        chosenWordForGame = await getExistingWord(randomWords);
+        console.log(randomWords);
     }
     console.log(chosenWordForGame);
-    startGame(chosenWordForGame);
+    splitWordIntoCharacters(chosenWordForGame[0].word);
 }
 
-function startGame(wordForGame) {
-    $("h1").text(wordForGame.word);
-    $("#antonyms").text("Antonyms: " + wordForGame.antonyms);
-    $("#synonyms").text("Synonyms: " + wordForGame.synonyms);
-}
+// debugger;
 
 start();
+
