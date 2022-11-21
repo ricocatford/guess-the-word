@@ -1,4 +1,6 @@
-
+/**
+ *  Calls API for generating a set of random words.
+ */
 async function getRandomWords(numberOfWords) {
     const url = `https://random-word-api.herokuapp.com/word?number=${numberOfWords}`;
 
@@ -9,6 +11,10 @@ async function getRandomWords(numberOfWords) {
     return result;
 }
 
+/**
+ *  Calls Free Dictionary API for checking passed word.
+ */
+
 async function searchDictionary(word) {
     const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 
@@ -18,6 +24,10 @@ async function searchDictionary(word) {
 
     return result;
 }
+
+/**
+ *  Iterates array of given words until condition is met, if it exists or not in the API.
+ */
 
 async function getExistingWord(allWords) {
     
@@ -30,12 +40,49 @@ async function getExistingWord(allWords) {
     return null;
 }
 
-function splitWordIntoCharacters(word) {
+function setGame(word) {
     const characters = [];
     for (let i = 0; i < word.length; i++) {
-        characters.push(word[i]);
+        const character = {
+            value: word[i],
+            position: i
+        };
+        characters.push(character);
     };
-    console.log(characters);
+    hideRandomCharacters(characters);
+    startGame(word, characters);
+    return characters;
+}
+
+function hideRandomCharacters(characters) {
+    const half = Math.round(characters.length / 2);
+    const randomNumbers = [];
+
+    while(randomNumbers.length < half){
+        var randomNumber = Math.floor(Math.random() * characters.length) + 1;
+        if(randomNumbers.indexOf(randomNumber) === -1) randomNumbers.push(randomNumber);
+    }
+    console.log(randomNumbers);
+    randomNumbers.sort((a, b) => a-b);
+    console.log(randomNumbers);
+    // switchVisibility(characters, randomNumbers);
+    return randomNumbers;
+}
+
+// function switchVisibility(characters, indexesToHide) {
+//     for (let i = 0; i < characters.length; i++) {
+//         if (indexesToHide[i])
+//     }
+// }
+
+function startGame(currentWord, currentWordCharacters) {
+    const game = {
+        word: currentWord,
+        characters: currentWordCharacters,
+        correctAnswers: 0,
+        incorrectAnswers: 0,
+    }
+    console.log(game);
 }
 
 async function start() {
@@ -44,10 +91,10 @@ async function start() {
     while (chosenWordForGame === null) {
         const randomWords = await getRandomWords(10);
         chosenWordForGame = await getExistingWord(randomWords);
-        console.log(randomWords);
+        // console.log(randomWords);
     }
-    console.log(chosenWordForGame);
-    splitWordIntoCharacters(chosenWordForGame[0].word);
+    setGame(chosenWordForGame[0].word);
+    // startGame(chosenWordForGame[0].word, characters);
 }
 
 // debugger;
