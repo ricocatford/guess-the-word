@@ -45,16 +45,16 @@ function setGame(word) {
     for (let i = 0; i < word.length; i++) {
         const character = {
             value: word[i],
-            position: i
+            display: true
         };
         characters.push(character);
     };
-    hideRandomCharacters(characters);
     startGame(word, characters);
-    return characters;
+    // hideRandomCharacters(characters, game);
+    // return characters;
 }
 
-function hideRandomCharacters(characters) {
+function hideRandomCharacters(characters, gameObj) {
     const half = Math.round(characters.length / 2);
     const randomNumbers = [];
 
@@ -62,18 +62,17 @@ function hideRandomCharacters(characters) {
         var randomNumber = Math.floor(Math.random() * characters.length) + 1;
         if(randomNumbers.indexOf(randomNumber) === -1) randomNumbers.push(randomNumber);
     }
-    console.log(randomNumbers);
     randomNumbers.sort((a, b) => a-b);
-    console.log(randomNumbers);
-    // switchVisibility(characters, randomNumbers);
+    switchDisplayValue(characters, randomNumbers);
     return randomNumbers;
 }
 
-// function switchVisibility(characters, indexesToHide) {
-//     for (let i = 0; i < characters.length; i++) {
-//         if (indexesToHide[i])
-//     }
-// }
+function switchDisplayValue(index, gameObj) {
+    for (let i = 0; i < index.length; i++) {
+        gameObj.characters[index].display = false;
+    }
+    console.log(characters);
+}
 
 function startGame(currentWord, currentWordCharacters) {
     const game = {
@@ -82,7 +81,9 @@ function startGame(currentWord, currentWordCharacters) {
         correctAnswers: 0,
         incorrectAnswers: 0,
     }
+    hideRandomCharacters(currentWordCharacters, game);
     console.log(game);
+    return game;
 }
 
 async function start() {
@@ -100,4 +101,4 @@ async function start() {
 // debugger;
 
 start();
-
+startGame()
