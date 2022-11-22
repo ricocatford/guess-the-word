@@ -1,5 +1,27 @@
+let game = {
+    word: undefined,
+    rounds: 0,
+    upscore: 0,
+    downscore: 0,
+    fails: 0,
+}
+
 /**
- *  Calls API for generating a set of random words.
+ * Declares what is the chosen word for the game.
+ */
+async function start() {
+    let chosenWordForGame = null;
+
+    while (chosenWordForGame === null) {
+        const randomWords = await getRandomWords(10);
+        chosenWordForGame = await checkWord(randomWords);
+    }
+    
+    splitWord(chosenWordForGame[0].word);
+}
+
+/**
+ * Calls API for generating a set of random words.
  */
 async function getRandomWords(numberOfWords) {
     const url = `https://random-word-api.herokuapp.com/word?number=${numberOfWords}`;
@@ -12,9 +34,8 @@ async function getRandomWords(numberOfWords) {
 }
 
 /**
- *  Calls Free Dictionary API for checking passed word.
+ * Calls Free Dictionary API for checking passed word.
  */
-
 async function searchDictionary(word) {
     const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 
@@ -26,10 +47,9 @@ async function searchDictionary(word) {
 }
 
 /**
- *  Iterates array of given words until condition is met, if it exists or not in the API.
+ * Iterates array of given words until condition is met, if it exists or not in the API.
  */
-
-async function getExistingWord(allWords) {
+async function checkWord(allWords) {
     
     for (let word of allWords) {
         const foundWordInDictionary = await searchDictionary(word);
@@ -40,8 +60,12 @@ async function getExistingWord(allWords) {
     return null;
 }
 
-function setGame(word) {
+/**
+ * Splits chosen word for game into characters.
+ */
+function splitWord(word) {
     const characters = [];
+    
     for (let i = 0; i < word.length; i++) {
         const character = {
             value: word[i],
@@ -49,52 +73,40 @@ function setGame(word) {
         };
         characters.push(character);
     };
-    startGame(word, characters);
-    // hideRandomCharacters(characters, game);
+    setWord(characters);
     return characters;
 }
 
-function generateRandomNumbers(characters) {
-    const half = Math.round(characters.length / 2);
+/**
+ * Sets game for game and calls function for hiding random characters.
+ */
+function setWord(word) {
+    game.word = word;
+    generateRandomNumbers(word);
+    return game;
+}
+
+function generateRandomNumbers(word) {
+    const half = Math.round(word.length / 2);
     const randomNumbers = [];
 
     while(randomNumbers.length < half){
-        var randomNumber = Math.floor(Math.random() * characters.length) + 1;
+        var randomNumber = Math.floor(Math.random() * word.length) + 1;
         if(randomNumbers.indexOf(randomNumber) === -1) randomNumbers.push(randomNumber);
     }
     randomNumbers.sort((a, b) => a-b);
-    // switchDisplayValue(characters, randomNumbers);
+    switchDisplayOff(randomNumbers);
     return randomNumbers;
 }
 
-function switchDisplayValue(index, gameObj) {
+function switchDisplayOff(index) {
     for (let i = 0; i < index.length; i++) {
-        gameObj.characters[index].display = false;
+        var ind = index[i];
+        game.word[ind].display = false;
     }
-    console.log(characters);
-}
-
-function startGame(currentWord, currentWordCharacters) {
-    const game = {
-        word: currentWord,
-        characters: currentWordCharacters,
-        correctAnswers: 0,
-        incorrectAnswers: 0,
-    }
-    generateRandomNumbers(currentWordCharacters, game);
     console.log(game);
     return game;
 }
 
-async function start() {
-    let chosenWordForGame = null;
-
-    while (chosenWordForGame === null) {
-        const randomWords = await getRandomWords(10);
-        chosenWordForGame = await getExistingWord(randomWords);
-    }
-    setGame(chosenWordForGame[0].word);
-}
 
 start();
-startGame()
