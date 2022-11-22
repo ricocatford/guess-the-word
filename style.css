@@ -3,23 +3,22 @@
   padding: 0;
   box-sizing: 1;
   font-family: sans-serif;
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 .game-controls,
 #app {
   display: flex;
   width: fit-content;
-  max-width: 1120px;
   margin: 0 auto;
 }
 
 .character-wrapper {
-  min-width: 3vw;
-  min-height: 3vh;
   text-align: center;
+  width: 4vw;
+  height: 4vh;
   padding: 1rem;
-  margin: 1rem;
+  margin: 0.5rem;
   border: 1px solid black;
   background: black;
   color: white;
