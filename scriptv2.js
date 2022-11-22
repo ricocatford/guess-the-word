@@ -106,11 +106,10 @@ function switchDisplayOff(wordCharacters, hiddenCharactersIndexes) {
  * Displays word iterating through array of word characters.
  */
 function displayWord() {
+    console.log(game);
     game.word.characters.map(character => {
         $("#app").append(`
-            <div class="character-wrapper">
-                <p class=${character.display ? "visible" : "hidden"}>${character.value}</p>
-            </div>
+            <input class="character-field" type="text" value="${character.display ? character.value : ""}"></input>
         `);
     });
 }

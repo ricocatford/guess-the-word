@@ -13,15 +13,18 @@
   margin: 0 auto;
 }
 
-.character-wrapper {
+#app-word-wrapper {
+  border: 2px solid lightgray;
+}
+
+.character-field {
+  width: 40px;
+  height: 40px;
+  border: 1px solid lightgray;
+  border-radius: .25em;
+  margin: 1rem;
   text-align: center;
-  width: 4vw;
-  height: 4vh;
-  padding: 1rem;
-  margin: 0.5rem;
-  border: 1px solid black;
-  background: black;
-  color: white;
+  text-transform: uppercase;
 }
 
 .visible {
@@ -34,5 +37,6 @@
 
 button {
   border: 1px solid black;
+  border-radius: .25em;
   padding: 1rem 2.5rem;
 }
