@@ -1,23 +1,9 @@
 let game = {
-    word: undefined,
+    word: null,
     rounds: 0,
     upscore: 0,
     downscore: 0,
     fails: 0,
-}
-
-/**
- * Declares what is the chosen word for the game.
- */
-async function start() {
-    let chosenWordForGame = null;
-
-    while (chosenWordForGame === null) {
-        const randomWords = await getRandomWords(10);
-        chosenWordForGame = await checkWord(randomWords);
-    }
-    
-    splitWord(chosenWordForGame[0].word);
 }
 
 /**
@@ -50,7 +36,6 @@ async function searchDictionary(word) {
  * Iterates array of given words until condition is met, if it exists or not in the API.
  */
 async function checkWord(allWords) {
-    
     for (let word of allWords) {
         const foundWordInDictionary = await searchDictionary(word);
         if (foundWordInDictionary && foundWordInDictionary.title != "No Definitions Found") {
@@ -65,7 +50,6 @@ async function checkWord(allWords) {
  */
 function splitWord(word) {
     const characters = [];
-    
     for (let i = 0; i < word.length; i++) {
         const character = {
             value: word[i],
@@ -83,6 +67,7 @@ function splitWord(word) {
 function setWord(word) {
     game.word = word;
     generateRandomNumbers(word);
+    console.log(game);
     return game;
 }
 
@@ -90,23 +75,66 @@ function generateRandomNumbers(word) {
     const half = Math.round(word.length / 2);
     const randomNumbers = [];
 
-    while(randomNumbers.length < half){
+    while (randomNumbers.length < half) {
         var randomNumber = Math.floor(Math.random() * word.length) + 1;
-        if(randomNumbers.indexOf(randomNumber) === -1) randomNumbers.push(randomNumber);
+        if (randomNumbers.indexOf(randomNumber) === -1) randomNumbers.push(randomNumber);
     }
     randomNumbers.sort((a, b) => a-b);
+
     switchDisplayOff(randomNumbers);
     return randomNumbers;
 }
 
 function switchDisplayOff(index) {
-    for (let i = 0; i < index.length; i++) {
-        var ind = index[i];
-        game.word[ind].display = false;
+    if (index.length > 0 && game.word != undefined) {
+        for (let i = 0; i < index.length; i++) {
+            var ind = index[i];
+            game.word[ind].display = false;
+        }
+        startRound();
+        return game;
     }
-    console.log(game);
-    return game;
+    // for (let i = 0; i < index.length; i++) {
+    //     var ind = index[i];
+    //     game.word[ind].display = false;
+    // }
+    // startRound(game);
+    // return game;
 }
 
+function displayGame(game) {
+    $("#app").empty();
+    if (game.word != null) {
+        game.word.map(item => {
+            $("#app").append(`
+                <p>${item.value}</p>
+            `);
+        });
+    }
+    // game.word.map(item => {
+    //     $("#app").append(`
+    //         <p>${item.value}</p>
+    //     `);
+    // });
+}
+
+function startRound() {
+    displayGame(game);
+    console.log("Click!");
+}
+
+/**
+ * Declares what is the chosen word for the game.
+ */
+async function start() {
+    let chosenWordForGame = null;
+
+    while (chosenWordForGame === null) {
+        const randomWords = await getRandomWords(10);
+        chosenWordForGame = await checkWord(randomWords);
+    }
+    splitWord(chosenWordForGame[0].word);
+    return chosenWordForGame;
+}
 
 start();
