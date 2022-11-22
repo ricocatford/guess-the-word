@@ -43,8 +43,8 @@ async function checkWord(allWords) {
             if (
                 selectedWordDefinition.word
                 && selectedWordDefinition.word.length > 2
-                && selectedWordDefinition.word.length < 11
-            )
+                && selectedWordDefinition.word.length < 8
+            ) 
                 return selectedWordDefinition;
         }
     }
@@ -77,6 +77,7 @@ function setWord(chosenWordForGame) {
     const processedWordCharacters = switchDisplayOff(wordCharacters, hiddenCharactersIndexes);
     game.word = {
         characters: processedWordCharacters,
+        meaning: chosenWordForGame.meanings[0].definitions[0].definition
     }
     startRound();
 }
@@ -105,30 +106,40 @@ function switchDisplayOff(wordCharacters, hiddenCharactersIndexes) {
 /**
  * Displays word iterating through array of word characters.
  */
-function displayWord() {
-    console.log(game);
+function displayTurn() {
+    $("#definition-wrapper").append(`
+            <p>${game.word.meaning}</p>
+    `);
     game.word.characters.map(character => {
-        $("#app").append(`
-            <input class="character-field" type="text" value="${character.display ? character.value : ""}"></input>
-        `);
+        if (character.display) {
+            $("#app-form").append(`
+                <input class="character-field" type="text" value="${character.value}" required disabled></input>
+            `);
+        } else {
+            $("#app-form").append(`
+                <input class="character-field" type="text" value="" required></input>
+            `);
+        }
     });
 }
 
 function startRound() {
-    displayWord();
+    displayTurn();
 }
 
 /**
  * Declares what is the chosen word for the game.
  */
 async function start() {
-    $("#app").empty();
+    $("#definition-wrapper").empty();
+    $("#app-form").empty();
     let chosenWordForGame = null;
     while (chosenWordForGame === null) {
         const randomWords = await getRandomWords(10);
         chosenWordForGame = await checkWord(randomWords);
     }
-    setWord(chosenWordForGame)
+    setWord(chosenWordForGame);
+    console.log(chosenWordForGame);
 }
 
 start();
