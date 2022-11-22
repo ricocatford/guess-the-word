@@ -104,13 +104,13 @@ function switchDisplayOff(index) {
 
 function displayGame(game) {
     $("#app").empty();
-    if (game.word != null) {
-        game.word.map(item => {
-            $("#app").append(`
-                <p>${item.value}</p>
-            `);
-        });
-    }
+    game.word.map(character => {
+        $("#app").append(`
+            <div class="character-wrapper">
+                <p class=${character.display ? "visible" : "hidden"}>${character.value}</p>
+            </div>
+        `);
+    });
     // game.word.map(item => {
     //     $("#app").append(`
     //         <p>${item.value}</p>
