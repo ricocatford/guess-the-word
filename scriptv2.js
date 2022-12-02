@@ -1,8 +1,7 @@
 let game = {
     rounds: 0,
-    upscore: 0,
-    downscore: 0,
-    fails: 0,
+    correct: 0,
+    incorrect: 0,
     word: null,
 }
 
@@ -60,6 +59,7 @@ function splitWord(word) {
         for (let i = 0; i < word.length; i++) {
             const character = {
                 value: word[i],
+                position: i,
                 display: true
             };
             characters.push(character);
@@ -113,18 +113,51 @@ function displayTurn() {
     game.word.characters.map(character => {
         if (character.display) {
             $("#app-form").append(`
-                <input class="character-field" type="text" value="${character.value}" required disabled></input>
+                <input id="character-${character.position}" class="character-field" type="text" value="${character.value}" required disabled></input>
             `);
         } else {
             $("#app-form").append(`
-                <input class="character-field" type="text" value="" required></input>
+                <input id="character-${character.position}" class="character-field" type="text" value="" required></input>
             `);
         }
     });
 }
 
+/**
+ * Displays score according game state
+ */
+function displayScore() {
+    $("#score-correct").text(`Correct: ${game.correct}`);
+    $("#score-incorrect").text(`Incorrect: ${game.incorrect}`);
+}
+
+function checkAnswer() {
+    let failed = false;
+    for (let i = 0; i < game.word.characters.length; i++) {
+        const currentInputValue = $(`#character-${i}`).val();
+        console.log(`Input number: ${i}, value: ${currentInputValue}`)
+        if (currentInputValue != game.word.characters[i].value) {
+            failed = true;
+        }
+    }
+
+    if (failed) {
+        game.incorrect++;
+        $("#score-incorrect").text(`Incorrect: ${game.incorrect}`);
+    } else {
+        game.correct++;
+        $("#score-correct").text(`Correct: ${game.correct}`);
+    }
+    
+}
+
+/**
+ * Starts game round
+ */
 function startRound() {
     displayTurn();
+    displayScore();
+    console.log(game);
 }
 
 /**
@@ -139,7 +172,6 @@ async function start() {
         chosenWordForGame = await checkWord(randomWords);
     }
     setWord(chosenWordForGame);
-    console.log(chosenWordForGame);
 }
 
 start();
