@@ -10,7 +10,7 @@ let game = {
  * Calls API for generating a set of random words.
  */
 async function getRandomWords(numberOfWords) {
-    const url = `https://random-word-api.herokuapp.com/word?number=${numberOfWords}`;
+    const url = `https://random-word-api.vercel.app/api?words=${numberOfWords}`;
     const result = 
         await fetch(url, {method: "GET"})
         .then(response => response.json());
