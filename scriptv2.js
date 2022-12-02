@@ -148,7 +148,7 @@ function checkAnswer() {
         game.correct++;
         $("#score-correct").text(`Correct: ${game.correct}`);
     }
-    
+    start();
 }
 
 /**
