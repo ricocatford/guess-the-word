@@ -18,10 +18,7 @@ a {
 
 ul {
   margin-bottom: 2rem;
-}
-
-li {
-  margin-bottom: .25rem;
+  margin-left: 1.5rem;
 }
 
 br {
@@ -71,12 +68,12 @@ br {
 
 .character-field,
 .character-field:disabled {
-  width: 40px;
-  height: 40px;
-  border: 1px solid lightgray;
+  width: 42px;
+  height: 42px;
+  border: 2px solid #d2d2d2;
   background-color: white;
-  border-radius: .25em;
-  margin: 1em .25em;
+  border-radius: .5em;
+  margin: 1rem .25rem;
   text-align: center;
 }
 
@@ -117,30 +114,28 @@ br {
 	}
 }
 
-.main-buttons-wrapper,
-.game-buttons-wrapper,
-.section-buttons-wrapper {
+.navbar {
   display: flex;
   margin: auto;
 }
 
-.main-buttons-wrapper {
+.main-navbar {
   width: 300px;
   flex-direction: column;
 }
 
-.game-buttons-wrapper,
-.section-buttons-wrapper {
+.game-navbar,
+.section-navbar {
   flex-direction: row;
   justify-content: space-around;
 }
 
-.game-buttons-wrapper {
+.game-navbar {
   width: 400px;
 }
 
-.section-buttons-wrapper {
-  margin-top: 2rem;
+.section-navbar {
+  margin-top: 4rem;
 }
 
 .btn {
@@ -175,7 +170,11 @@ br {
 }
 
 .icon {
-  color: white;
+  color: #ffffff;
   font-size: 0.8em;
   margin-right: .5em;
+}
+
+.dark-icon {
+  color: #000000;
 }

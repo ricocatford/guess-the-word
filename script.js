@@ -42,7 +42,7 @@ async function checkWord(allWords) {
             if (
                 selectedWordDefinition.word
                 && selectedWordDefinition.word.length > 2
-                && selectedWordDefinition.word.length < 8
+                && selectedWordDefinition.word.length < 9
             ) 
                 return selectedWordDefinition;
         }
