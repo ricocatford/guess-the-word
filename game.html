@@ -10,27 +10,28 @@
 <body>
     <div class="app-container">
         <div id="app">
-        <div id="definition-wrapper">
-    
-        </div>
-        <div class="form-wrapper">
-            <form id="app-form">
-                
+            <div id="app-definition-wrapper">
+        
+            </div>
+            <form id="app-form" onsubmit="checkAnswer()">
+                <div id="app-form-inputs-wrapper">
+
+                </div>
+                <!-- <a href="./index.html" class="btn btn--primary">
+                    Quit
+                </a>
+                <input class="btn btn--tertiary" type="submit" value="Answer" /> -->
             </form>
         </div>
-        
-        </div>
-        <div class="game-controls">
-            <button type="button" onclick="start()">
-                Start
-            </button>
-            <button type="button" onclick="checkAnswer()">
-                Answer
-            </button>
-            <div class="game-score">
-                <p id="score-correct"></p>
-                <p id="score-incorrect"></p>
-            </div>
+        <a href="./index.html" class="btn btn--primary">
+            Quit
+        </a>
+        <button class="btn btn--tertiary" onclick="checkAnswer()">
+            Answer
+        </button>
+        <div class="game-score">
+            <p id="score-correct"></p>
+            <p id="score-incorrect"></p>
         </div>
     </div>
     

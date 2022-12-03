@@ -1,8 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&family=Poppins:wght@500;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: 1;
-  font-family: sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(#ffffff, #d2d2d2);
+}
+
+a {
+  text-decoration: none;
 }
 
 .app-container {
@@ -10,22 +21,44 @@
   width: 960px;
 }
 
+.flex-container {
+  display: flex;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3em;
+}
+
+.lead {
+  margin-bottom: 2rem;
+}
+
+.subheading {
+  margin-bottom: 1rem;
+  font-size: 2em;
+}
+
 .game-controls,
 #app {
   width: fit-content;
   max-width: 900px;
-  margin: 0 auto;
+  margin: auto;
 }
 
-#definition-wrapper {
+#app-definition-wrapper {
   text-align: center;
   font-size: 1rem;
 }
 
 #app-form {
-  display: flex;
   width: fit-content;
   margin: 2rem auto;
+}
+
+#app-form-inputs-wrapper {
+  display: flex;
 }
 
 .character-field,
@@ -47,8 +80,65 @@
   visibility: hidden;
 }
 
-button {
-  border: 1px solid black;
-  border-radius: .25em;
-  padding: 1rem 2.5rem;
+.logo-wrapper {
+  margin: 4rem auto;
+  width: fit-content;
+  animation: float 7s ease-in-out infinite;
+  background: transparent;
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-10px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+.buttons-wrapper {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.btn {
+  font-family: "Passion one", cursive;
+  cursor: pointer;
+  border: transparent;
+  color: white;
+  border-radius: .5em;
+  font-size: 1.5em;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding: .75rem 2rem;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all .2s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.02);
+}
+
+.btn--primary {
+  background: rgb(191, 14, 14);
+}
+
+.btn--secondary {
+  background: rgb(239, 135, 9)
+}
+
+.btn--tertiary {
+  background: rgb(64, 0, 116);
+}
+
+.icon {
+  color: white;
+  font-size: 0.8em;
+  margin-right: .5em;
 }

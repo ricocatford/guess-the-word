@@ -107,16 +107,16 @@ function switchDisplayOff(wordCharacters, hiddenCharactersIndexes) {
  * Displays word iterating through array of word characters.
  */
 function displayTurn() {
-    $("#definition-wrapper").append(`
+    $("#app-definition-wrapper").append(`
             <p>${game.word.meaning}</p>
     `);
     game.word.characters.map(character => {
         if (character.display) {
-            $("#app-form").append(`
+            $("#app-form-inputs-wrapper").append(`
                 <input id="character-${character.position}" class="character-field" type="text" value="${character.value}" required disabled></input>
             `);
         } else {
-            $("#app-form").append(`
+            $("#app-form-inputs-wrapper").append(`
                 <input id="character-${character.position}" class="character-field" type="text" value="" required></input>
             `);
         }
@@ -164,13 +164,14 @@ function startRound() {
  * Declares what is the chosen word for the game.
  */
 async function start() {
-    $("#definition-wrapper").empty();
-    $("#app-form").empty();
+    $("#app-definition-wrapper").empty();
+    $("#app-form-inputs-wrapper").empty();
     let chosenWordForGame = null;
     while (chosenWordForGame === null) {
         const randomWords = await getRandomWords(10);
         chosenWordForGame = await checkWord(randomWords);
     }
+    console.log(chosenWordForGame);
     setWord(chosenWordForGame);
 }
 
