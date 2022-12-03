@@ -11,6 +11,9 @@
 <body>
     <main class="app-container">
         <div id="app">
+            <h1 class="heading">
+                Guess the Word
+            </h1>
             <div id="app-definition-wrapper">
         
             </div>
@@ -26,15 +29,15 @@
         </div>
         <div class="navbar game-navbar">
             <a href="./index.html" class="btn btn--tertiary">
-                <i class="fa-solid fa-backward-step icon"></i>Back
+                <i class="fa-solid fa-backward-step icon"></i>Quit
             </a>
             <button class="btn btn--primary" onclick="checkAnswer()">
                 <i class="fa-solid fa-lightbulb icon"></i>Answer
             </button>
         </div>
         <div class="game-score-panel">
-            <p id="score-correct"></p>
-            <p id="score-incorrect"></p>
+            <p id="score-lost"></p>
+            <p id="score-won"></p>
         </div>
     </main>
     

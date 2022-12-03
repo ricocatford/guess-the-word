@@ -1,7 +1,7 @@
 let game = {
     rounds: 0,
-    correct: 0,
-    incorrect: 0,
+    won: 0,
+    lost: 0,
     word: null,
 }
 
@@ -127,8 +127,8 @@ function displayTurn() {
  * Displays score according game state
  */
 function displayScore() {
-    $("#score-correct").text(`Correct: ${game.correct}`);
-    $("#score-incorrect").text(`Incorrect: ${game.incorrect}`);
+    $("#score-lost").text(`Lost: ${game.lost}`);
+    $("#score-won").text(`Won: ${game.won}`);
 }
 
 function checkAnswer() {
@@ -142,11 +142,11 @@ function checkAnswer() {
     }
 
     if (failed) {
-        game.incorrect++;
-        $("#score-incorrect").text(`Incorrect: ${game.incorrect}`);
+        game.lost++;
+        $("#score-lost").text(`Lost: ${game.lost}`);
     } else {
-        game.correct++;
-        $("#score-correct").text(`Correct: ${game.correct}`);
+        game.won++;
+        $("#score-won").text(`Won: ${game.won}`);
     }
     start();
 }
