@@ -9,27 +9,62 @@
     <title>Guess the Word</title>
 </head>
 <body>
-    <div class="app-container">
+    <main class="app-container">
         <h1 class="heading">
             How to play
         </h1>
         <p class="lead">
-            Giving you a description of the word, you have to guess it. There's <strong>thousands</strong>
-            of words! Test your vocabulary with this wonderful game.
+            Giving you a definition of the word, you have to guess it. There's <strong>thousands</strong>
+            of words! Test your vocabulary with this wonderful game or challenge your friends for a match.
         </p>
         <h2 class="subheading">
             Rules
         </h2>
         <ul>
             <li>
-                Fill up the missing characters of the word for winning the round.
+                Guess the missing characters of the word.
             </li>
             <li>
-                You have 60 seconds to guess the word (to be implemented soon).
+                There's no time limit.
             </li>
         </ul>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script src="./scriptv2.js"></script>
+        <h2 class="subheading">
+            Game Mechanics
+        </h2>
+        <ul>
+            <li>
+                At the beginning of the turn, a definition will be displayed.
+            </li>
+            <li>
+                Guess half of the word's missing characters (rounded up).
+            </li>
+            <li>
+                Once you submit your answer, the result will be displayed including the word with phonetics.
+            </li>
+        </ul>
+        <h2 class="subheading">
+            Good to know
+        </h2>
+        <ul>
+            <li>
+                I've found some words that can be in plural form, keep it in mind!
+            </li>
+            <li>
+                I strongly recommend you also read the disclaimer before you play.
+            </li>
+        </ul>
+        <div class="section-buttons-wrapper">
+            <a href="./index.html" class="btn btn--tertiary">
+                <i class="fa-solid fa-backward-step icon"></i>Back
+            </a>
+            <a href="./disclaimer.html" class="btn btn--secondary">
+                <i class="fa-solid fa-circle-info icon"></i>Disclaimer
+            </a>
+            
+            <a href="./game.html" class="btn btn--primary">
+                <i class="fa-solid fa-play icon"></i>Play now
+            </a>
+        </div>
+    </main>
 </body>
 </html>

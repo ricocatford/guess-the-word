@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6aecce4a80.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Guess the Word: The Game</title>
 </head>
 <body>
-    <div class="app-container">
+    <main class="app-container">
         <div id="app">
             <div id="app-definition-wrapper">
         
@@ -23,17 +24,19 @@
                 <input class="btn btn--tertiary" type="submit" value="Answer" /> -->
             </form>
         </div>
-        <a href="./index.html" class="btn btn--primary">
-            Quit
-        </a>
-        <button class="btn btn--tertiary" onclick="checkAnswer()">
-            Answer
-        </button>
-        <div class="game-score">
+        <div class="game-buttons-wrapper">
+            <a href="./index.html" class="btn btn--tertiary">
+                <i class="fa-solid fa-backward-step icon"></i>Back
+            </a>
+            <button class="btn btn--primary" onclick="checkAnswer()">
+                <i class="fa-solid fa-lightbulb icon"></i>Answer
+            </button>
+        </div>
+        <div class="game-score-panel">
             <p id="score-correct"></p>
             <p id="score-incorrect"></p>
         </div>
-    </div>
+    </main>
     
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="./scriptv2.js"></script>

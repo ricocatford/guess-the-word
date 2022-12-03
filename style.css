@@ -16,13 +16,24 @@ a {
   text-decoration: none;
 }
 
-.app-container {
-  margin: 2rem auto;
-  width: 960px;
+ul {
+  margin-bottom: 2rem;
 }
 
-.flex-container {
-  display: flex;
+li {
+  margin-bottom: .25rem;
+}
+
+br {
+  display: block;
+  content: "";
+  margin: .75rem;
+}
+
+.app-container {
+  margin: 2rem auto;
+  padding: 0 2rem;
+  width: 960px;
 }
 
 .heading {
@@ -40,11 +51,8 @@ a {
   font-size: 2em;
 }
 
-.game-controls,
 #app {
-  width: fit-content;
-  max-width: 900px;
-  margin: auto;
+  min-height: 300px;
 }
 
 #app-definition-wrapper {
@@ -80,6 +88,16 @@ a {
   visibility: hidden;
 }
 
+.game-score-panel {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 300px;
+  border: 2px solid #ffffff;
+  border-radius: .5em;
+}
+
 .logo-wrapper {
   margin: 4rem auto;
   width: fit-content;
@@ -99,11 +117,30 @@ a {
 	}
 }
 
-.buttons-wrapper {
-  margin: auto;
+.main-buttons-wrapper,
+.game-buttons-wrapper,
+.section-buttons-wrapper {
   display: flex;
-  flex-direction: column;
+  margin: auto;
+}
+
+.main-buttons-wrapper {
   width: 300px;
+  flex-direction: column;
+}
+
+.game-buttons-wrapper,
+.section-buttons-wrapper {
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.game-buttons-wrapper {
+  width: 400px;
+}
+
+.section-buttons-wrapper {
+  margin-top: 2rem;
 }
 
 .btn {
