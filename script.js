@@ -78,10 +78,11 @@ function setWord(chosenWordForGame) {
     const hiddenCharactersIndexes = generateHiddenCharactersIndexes(wordCharacters);
     const processedWordCharacters = switchDisplayOff(wordCharacters, hiddenCharactersIndexes);
     game.word = {
+        word: chosenWordForGame.word,
         characters: processedWordCharacters,
-        meaning: chosenWordForGame.meanings[0].definitions[0].definition
-    }
-    startRound();
+        meaning: chosenWordForGame.meanings[0].definitions[0].definition,
+        phonetic: chosenWordForGame.phonetic
+    };
 }
 
 function generateHiddenCharactersIndexes(word) {
@@ -106,7 +107,7 @@ function switchDisplayOff(wordCharacters, hiddenCharactersIndexes) {
 }
 
 /**
- * Displays word iterating through array of word characters.
+ * Displays word characters as inputs.
  */
 function displayTurn() {
     $("#app-definition-wrapper").append(`
@@ -115,11 +116,11 @@ function displayTurn() {
     game.word.characters.map(character => {
         if (character.display) {
             $("#app-form-inputs-wrapper").append(`
-                <input id="character-${character.position}" class="character-field" type="text" value="${character.value}" required disabled></input>
+                <input id="character-${character.position}" class="character-field" type="text" value="${character.value}" disabled></input>
             `);
         } else {
             $("#app-form-inputs-wrapper").append(`
-                <input id="character-${character.position}" class="character-field" type="text" value="" required></input>
+                <input id="character-${character.position}" class="character-field" type="text" value="" autocomplete="off" maxlength="1"></input>
             `);
         }
     });
@@ -136,41 +137,59 @@ function displayScore() {
 /**
  * Check wether the answer is right or wrong.
  */
-function checkAnswer() {
-    let failed = false;
+async function checkAnswer(event) {
+    event.preventDefault();
+    let correctCharacters = checkIfCorrectCharacters();
+    if (correctCharacters) {
+        game.won++;
+    } else {
+        game.lost++;
+    }
+    displayResult(correctCharacters);
+}
+
+/**
+ * 
+ */
+function checkIfCorrectCharacters() {
     for (let i = 0; i < game.word.characters.length; i++) {
         const currentInputValue = $(`#character-${i}`).val();
         if (currentInputValue != game.word.characters[i].value) {
-            failed = true;
+            return false;
         }
     }
-
-    if (failed) {
-        game.lost++;
-        $("#score-lost").text(`Lost: ${game.lost}`);
-    } else {
-        game.won++;
-        $("#score-won").text(`Won: ${game.won}`);
-    }
-    start();
+    return true;
 }
 
-function displayScore() {
-
+function displayResult(isItWin) {
+    console.log(game.word.fullword);
+    $("#modal").show();
+    
+    $("#modal-content").empty().append(`
+        <h1 class="subheading">You have ${isItWin ? "won" : "lost"}.</h1>
+        <p class="lead"><strong>Word</strong>: ${game.word.word}</p>
+        <p class"lead"><strong>Phonetic</strong>: ${game.word.phonetic ? game.word.phonetic : "Unavailable."}</p>
+        <p class="lead"><strong>Hint</strong>: ${game.word.meaning}</p>
+        <div class="game-score-panel">
+            <p id="score-lost">Lost: ${game.lost}</p>
+            <p id="score-won">Won: ${game.won}</p>
+        </div>
+        <div class="navbar section-navbar">
+            <a href="./index.html" class="btn btn--tertiary">
+                <i class="fa-solid fa-backward-step icon"></i>Quit
+            </a>
+            <button class="btn btn--primary" onclick="startRound()">
+                Next round
+            </button>
+        </div>
+    `);
 }
 
 /**
  * Starts game round.
  */
-function startRound() {
-    displayTurn();
-    displayScore();
-}
-
-/**
- * Declares what is the chosen word for the game.
- */
-async function start() {
+async function startRound() {
+    $("#modal").hide();
     $("#app-definition-wrapper").empty();
     $("#app-form-inputs-wrapper").empty();
     let chosenWordForGame = null;
@@ -180,6 +199,13 @@ async function start() {
     }
     console.log(chosenWordForGame);
     setWord(chosenWordForGame);
+    displayTurn();
+    displayScore();
 }
 
-start();
+startRound();
+
+//How to focus element with jQuery
+// $( document ).ready(function() {
+//     $( "#login" ).focus();
+// });

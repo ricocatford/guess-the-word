@@ -17,27 +17,27 @@
             <div id="app-definition-wrapper">
         
             </div>
-            <form id="app-form" onsubmit="checkAnswer()">
+            <form id="app-form" onsubmit="checkAnswer(event)">
                 <div id="app-form-inputs-wrapper">
 
                 </div>
-                <!-- <a href="./index.html" class="btn btn--primary">
-                    Quit
-                </a>
-                <input class="btn btn--tertiary" type="submit" value="Answer" /> -->
+                <div class="navbar section-navbar">
+                    <a href="./index.html" class="btn btn--tertiary">
+                        <i class="fa-solid fa-backward-step icon"></i>Quit
+                    </a>
+                    <input class="btn btn--secondary" type="reset">
+                    <input class="btn btn--primary" type="submit">
+                </div>
             </form>
-        </div>
-        <div class="navbar game-navbar">
-            <a href="./index.html" class="btn btn--tertiary">
-                <i class="fa-solid fa-backward-step icon"></i>Quit
-            </a>
-            <button class="btn btn--primary" onclick="checkAnswer()">
-                <i class="fa-solid fa-lightbulb icon"></i>Answer
-            </button>
         </div>
         <div class="game-score-panel">
             <p id="score-lost"></p>
             <p id="score-won"></p>
+        </div>
+        <div id="modal" class="result-modal">
+            <div id="modal-content" class="result-modal-content">
+            </div>
+            
         </div>
     </main>
     

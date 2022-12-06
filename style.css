@@ -16,6 +16,15 @@ a {
   text-decoration: none;
 }
 
+.link {
+  color: #740ba8;
+}
+
+.link:hover,
+.link:focus {
+  color: #4c077a;
+}
+
 ul {
   margin-bottom: 2rem;
   margin-left: 1.5rem;
@@ -58,12 +67,12 @@ br {
 }
 
 #app-form {
-  width: fit-content;
   margin: 2rem auto;
 }
 
 #app-form-inputs-wrapper {
   display: flex;
+  justify-content: center;
 }
 
 .character-field,
@@ -77,27 +86,45 @@ br {
   text-align: center;
 }
 
-.visible {
-  visibility: visible;
-}
-
-.hidden {
-  visibility: hidden;
-}
-
 .game-score-panel {
   display: flex;
   justify-content: space-around;
   margin: 2rem auto;
   padding: 1rem;
   width: 300px;
+  background-color: #ffffff;
   border: 2px solid #d2d2d2;
   border-radius: .5em;
+}
+
+.result-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.result-modal-content {
+  background-color: #ffffff;
+  border-radius: 1em;
+  margin: 5% auto;
+  padding: 2em;
+  border: 1px solid #d2d2d2;
+  width: 90%;
 }
 
 .logo-wrapper {
   margin: 4rem auto;
   width: fit-content;
+}
+
+.animated {
   animation: float 6s ease-in-out infinite;
 }
 
@@ -127,10 +154,6 @@ br {
 .section-navbar {
   flex-direction: row;
   justify-content: space-around;
-}
-
-.game-navbar {
-  width: 400px;
 }
 
 .section-navbar {
