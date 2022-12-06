@@ -30,14 +30,35 @@
                 </div>
             </form>
         </div>
-        <div class="game-score-panel">
-            <p id="score-lost"></p>
-            <p id="score-won"></p>
+        <div class="game-score-container">
+            <h4 class="score-heading">Rounds score</h4>
+            <div class="game-score-wrapper">
+                <p>Lost: <span class="score score-lost">0</span></p>
+                <p>Won: <span class="score score-won">0</span></p>
+            </div>
         </div>
         <div id="modal" class="result-modal">
-            <div id="modal-content" class="result-modal-content">
+            <div class="app-container result-modal-container">
+                <div id="result-wrapper">
+
+                </div>
+                <div class="navbar section-navbar">
+                    <a href="./index.html" class="btn btn--tertiary">
+                        <i class="fa-solid fa-backward-step icon"></i>Quit
+                    </a>
+                    <button class="btn btn--primary" onclick="startRound()">
+                        <i class="fa-solid fa-forward-step icon"></i>Continue
+                    </button>
+                </div>
+                <div class="game-score-container">
+                    <h4 class="score-heading">Rounds score</h4>
+                    <div class="game-score-wrapper">
+                        <p>Lost: <span class="score score-lost">0</span></p>
+                        <p>Won: <span class="score score-won">0</span></p>
+                    </div>
+                </div>
+                
             </div>
-            
         </div>
     </main>
     

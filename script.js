@@ -19,7 +19,7 @@ async function getRandomWords(numberOfWords) {
 }
 
 /**
- * Calls Free Dictionary API for checking passed word.
+ * Calls dictionary API for checking passed word.
  */
 async function searchDictionary(word) {
     const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
@@ -127,11 +127,11 @@ function displayTurn() {
 }
 
 /**
- * Displays score according game state.
+ * Displays current score.
  */
 function displayScore() {
-    $("#score-lost").text(`Lost: ${game.lost}`);
-    $("#score-won").text(`Won: ${game.won}`);
+    $(".score-lost").text(`${game.lost}`);
+    $(".score-won").text(`${game.won}`);
 }
 
 /**
@@ -149,7 +149,7 @@ async function checkAnswer(event) {
 }
 
 /**
- * 
+ * Checks input by input, all characters.
  */
 function checkIfCorrectCharacters() {
     for (let i = 0; i < game.word.characters.length; i++) {
@@ -162,27 +162,15 @@ function checkIfCorrectCharacters() {
 }
 
 function displayResult(isItWin) {
-    console.log(game.word.fullword);
     $("#modal").show();
     
-    $("#modal-content").empty().append(`
-        <h1 class="subheading">You have ${isItWin ? "won" : "lost"}.</h1>
+    $("#result-wrapper").empty().append(`
+        <h1 class="subheading result-heading">You have ${isItWin ? "won" : "lost"} the round!</h1>
         <p class="lead"><strong>Word</strong>: ${game.word.word}</p>
         <p class"lead"><strong>Phonetic</strong>: ${game.word.phonetic ? game.word.phonetic : "Unavailable."}</p>
         <p class="lead"><strong>Hint</strong>: ${game.word.meaning}</p>
-        <div class="game-score-panel">
-            <p id="score-lost">Lost: ${game.lost}</p>
-            <p id="score-won">Won: ${game.won}</p>
-        </div>
-        <div class="navbar section-navbar">
-            <a href="./index.html" class="btn btn--tertiary">
-                <i class="fa-solid fa-backward-step icon"></i>Quit
-            </a>
-            <button class="btn btn--primary" onclick="startRound()">
-                Next round
-            </button>
-        </div>
     `);
+    displayScore();
 }
 
 /**
