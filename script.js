@@ -1,5 +1,7 @@
+/**
+ * Game object.
+ */
 let game = {
-    rounds: 0,
     won: 0,
     lost: 0,
     word: null,
@@ -124,18 +126,20 @@ function displayTurn() {
 }
 
 /**
- * Displays score according game state
+ * Displays score according game state.
  */
 function displayScore() {
     $("#score-lost").text(`Lost: ${game.lost}`);
     $("#score-won").text(`Won: ${game.won}`);
 }
 
+/**
+ * Check wether the answer is right or wrong.
+ */
 function checkAnswer() {
     let failed = false;
     for (let i = 0; i < game.word.characters.length; i++) {
         const currentInputValue = $(`#character-${i}`).val();
-        console.log(`Input number: ${i}, value: ${currentInputValue}`)
         if (currentInputValue != game.word.characters[i].value) {
             failed = true;
         }
@@ -151,13 +155,16 @@ function checkAnswer() {
     start();
 }
 
+function displayScore() {
+
+}
+
 /**
- * Starts game round
+ * Starts game round.
  */
 function startRound() {
     displayTurn();
     displayScore();
-    console.log(game);
 }
 
 /**
