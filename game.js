@@ -19,7 +19,7 @@ async function getRandomWords(numberOfWords) {
 }
 
 /**
- * Calls dictionary API for checking passed word.
+ * Calls dictionary API for checking (passed) word.
  */
 async function searchDictionary(word) {
     const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
@@ -141,7 +141,7 @@ function displayScore() {
 }
 
 /**
- * Check wether the answer is right or wrong.
+ * Checks if the answer is right or wrong.
  */
 async function checkAnswer(event) {
     event.preventDefault();
@@ -193,7 +193,6 @@ async function startRound() {
         const randomWords = await getRandomWords(10);
         chosenWordForGame = await checkWord(randomWords);
     }
-    console.log(chosenWordForGame);
     setWord(chosenWordForGame);
     displayTurn();
     displayScore();

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Passion+One&family=Poppins:wght@500;700&display=swap');
 
 * {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-sizing: 1;
   font-family: "Poppins", sans-serif;
@@ -37,8 +37,6 @@ br {
 }
 
 .app-container {
-  margin: 2rem auto;
-  padding: 0 2rem;
   width: 960px;
 }
 
@@ -59,6 +57,7 @@ br {
 
 #app {
   min-height: 300px;
+  margin-top: 1rem;
 }
 
 #app-definition-wrapper {
@@ -84,6 +83,7 @@ br {
   border-radius: .5em;
   margin: 1rem .25rem;
   text-align: center;
+  text-transform: lowercase;
 }
 
 .character-field:disabled {
@@ -145,6 +145,7 @@ br {
   padding: 1rem;
   width: 900px;
   min-height: 50vh;
+  margin-top: 1rem;
 }
 
 .result-game-word {
@@ -223,10 +224,15 @@ br {
   padding: .75rem 2rem;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   transition: all .2s ease-in-out;
+  min-width: 10vw;
 }
 
 .btn:hover {
   transform: scale(1.02);
+}
+
+.btn-home {
+  min-width: 70%;
 }
 
 .btn--primary {
@@ -249,4 +255,62 @@ br {
 
 .dark-icon {
   color: #000000;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .app-container {
+    width: 740px;
+  }
+
+  .result-modal-container {
+    max-width: 700px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .app-container {
+    width: 310px;
+  }
+
+  .logo-img {
+    width: 310px;
+  }
+
+  .heading {
+    font-size: 2.25em;
+    margin: 1rem 0;
+  }
+
+  .subheading {
+    font-size: 1.5em;
+  }
+
+  .game-navbar,
+  .section-navbar {
+    flex-direction: column-reverse;
+    width: 300px;
+  }
+
+  .character-field {
+    width: 32px;
+    height: 32px;
+    margin: 1rem .1rem;
+  }
+
+  .btn {
+    width: 80%;
+  }
+
+  input[type=reset],
+  input[type=submit] {
+    width: 100%;
+  }
+
+  .result {
+    font-size: 1.5em;
+  }
+
+  .result-game-word {
+    margin-top: 0;
+  }
 }
