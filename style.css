@@ -73,17 +73,21 @@ br {
 #app-form-inputs-wrapper {
   display: flex;
   justify-content: center;
+  min-height: 10vh;
 }
 
-.character-field,
-.character-field:disabled {
+.character-field {
   width: 42px;
   height: 42px;
-  border: 2px solid #d2d2d2;
+  border: 2px solid #838383;
   background-color: white;
   border-radius: .5em;
   margin: 1rem .25rem;
   text-align: center;
+}
+
+.character-field:disabled {
+  border: 2px solid #d2d2d2;
 }
 
 .game-score-container {
@@ -137,12 +141,35 @@ br {
   background-color: #ffffff;
   border-radius: 1em;
   border: 1px solid #d2d2d2;
+  text-align: center;
+  padding: 1rem;
   width: 900px;
+  min-height: 50vh;
 }
 
-.result-heading {
+.result-game-word {
+  font-size: 3em;
+  text-transform: capitalize;
+  margin: 1rem auto 0;
+}
+
+.result-game-phonetic {
+  margin: 0 0 2rem;
+}
+
+.result-game-hint {
+  margin: 0;
+}
+
+.result {
+  font-size: 2em;
   text-align: center;
-  margin-top: 1rem;
+  margin: 2rem;
+}
+
+.result-highlight {
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .logo-wrapper {

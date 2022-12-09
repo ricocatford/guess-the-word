@@ -71,7 +71,7 @@ function splitWord(word) {
 }
 
 /**
- * Sets game for game and calls function for hiding random characters.
+ * Sets word for game and calls function for hiding random characters.
  */
 function setWord(chosenWordForGame) {
     const wordCharacters = splitWord(chosenWordForGame.word);
@@ -85,13 +85,16 @@ function setWord(chosenWordForGame) {
     };
 }
 
+/**
+ * Generates random indexes.
+ */
 function generateHiddenCharactersIndexes(word) {
     const half = Math.round(word.length / 2);
     const randomNumbers = [];
     while (randomNumbers.length < half) {
         const randomNumber = Math.floor(Math.random() * word.length);
-        const indexOfRandomNumber = randomNumbers.indexOf(randomNumber) // Test later.
-        if (randomNumbers.indexOf(randomNumber) === -1) {
+        const indexOfRandomNumber = randomNumbers.indexOf(randomNumber);
+        if (indexOfRandomNumber === -1) {
             randomNumbers.push(randomNumber);
         }
     }
@@ -99,6 +102,9 @@ function generateHiddenCharactersIndexes(word) {
     return randomNumbers;
 }
 
+/**
+ * Switches display field to false of (passed) random indexes.
+ */
 function switchDisplayOff(wordCharacters, hiddenCharactersIndexes) {
     for (let index of hiddenCharactersIndexes) {
         wordCharacters[index].display = false;
@@ -160,15 +166,17 @@ function checkIfCorrectCharacters() {
     }
     return true;
 }
-
+/**
+ * Displays result modal.
+ */
 function displayResult(isItWin) {
     $("#modal").show();
     
     $("#result-wrapper").empty().append(`
-        <h1 class="subheading result-heading">You have ${isItWin ? "won" : "lost"} the round!</h1>
-        <p class="lead"><strong>Word</strong>: ${game.word.word}</p>
-        <p class"lead"><strong>Phonetic</strong>: ${game.word.phonetic ? game.word.phonetic : "Unavailable."}</p>
-        <p class="lead"><strong>Hint</strong>: ${game.word.meaning}</p>
+        <h1 class="heading result-game-word">${game.word.word}</h1>
+        <p class="result-game-phonetic">${game.word.phonetic ? game.word.phonetic : ""}</p>
+        <p class="result-game-hint">${game.word.meaning}</p>
+        <p class="result">You have <span class="result-highlight">${isItWin ? "won" : "lost"}</span> the round!</p>
     `);
     displayScore();
 }
@@ -192,8 +200,3 @@ async function startRound() {
 }
 
 startRound();
-
-//How to focus element with jQuery
-// $( document ).ready(function() {
-//     $( "#login" ).focus();
-// });
