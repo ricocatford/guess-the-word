@@ -1,5 +1,5 @@
 # Guess the Word: The Game
-
+![Devices display](assets/images/readme/devices.jpg)
 ## 1. Description
 Guess the Word is a game where you have the hint of a word and you have to guess the missing characters of the word. I got inspired by childhood game 'Hangman' and also spanish TV show 'Pasapalabra'. The game is powered by two APIs and relies on them to work:
 - [Random words API](https://random-word-api.vercel.app/): Used for getting random words.
@@ -22,7 +22,7 @@ These are the fonts I've chosen for my design, both found on Google Fonts:
 - [Passion One](https://fonts.google.com/specimen/Passion+One): Used for logo and buttons.
 
 ####  **Icons**
-I've used few icons from Font Awesome for buttons:
+These are the icons I've used for buttons, all found on Font Awesome:
 - [House](https://fontawesome.com/icons/house?s=solid&f=classic): Used for 'Main menu' button.
 - [Book](https://fontawesome.com/icons/book?s=solid&f=classic): Used for 'How to play' button.
 - [Info](https://fontawesome.com/icons/info-circle?s=solid&f=classic): Used for 'Disclaimer' button. Also used for subheading 'Good to know' ('How to play' page).
@@ -30,7 +30,7 @@ I've used few icons from Font Awesome for buttons:
 - [Backward Step](https://fontawesome.com/icons/backward-step?s=solid&f=classic): Used for 'Quit' button.
 - [Forward Step](https://fontawesome.com/icons/forward-step?s=solid&f=classic): Used for 'Continue' button.
 
-I've also used some more icons for subheadings:
+These are the icons I've used for subheadings, all found on Font Awesome:
 - [Gavel](https://fontawesome.com/icons/gavel?s=solid&f=classic): Used for subheading 'Rules' ('How to play' page).
 - [Gear](https://fontawesome.com/icons/gear?s=solid&f=classic): Used for subheading 'Game mechanics' ('How to play' page).
 - [Bolt Lightning](https://fontawesome.com/icons/bolt-lightning?s=solid&f=classic): Used for subheading 'Powered by two APIs' ('Disclaimer' page).
@@ -42,6 +42,15 @@ I've created my logo using Adobe Photoshop and same font I use for my buttons ([
 
 ![Logo](assets/images/logo.png)
 
+### Wireframes
+#### **Mobile view**
+![Mobile view wireframes](assets/images/readme/s-wireframes.jpg)
+
+#### **Tablet view**
+![Tablet view wireframes](assets/images/readme/m-wireframes.jpg)
+
+#### **Desktop view**
+![Desktop view wireframes](assets/images/readme/l-wireframes.jpg)
 ### User stories
 #### **First time users**
 As a first time user I would like to see:
