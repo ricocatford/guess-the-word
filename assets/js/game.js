@@ -65,7 +65,7 @@ function splitWord(word) {
                 display: true
             };
             characters.push(character);
-        };
+        }
     }
     return characters;
 }

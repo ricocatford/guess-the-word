@@ -3,7 +3,7 @@
 * {
   margin: 0 auto;
   padding: 0;
-  box-sizing: 1;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
@@ -14,15 +14,6 @@ body {
 
 a {
   text-decoration: none;
-}
-
-.link {
-  color: rgb(116, 11, 168);
-}
-
-.link:hover,
-.link:focus {
-  color: rgb(76, 7, 122);
 }
 
 ul {
@@ -80,7 +71,7 @@ br {
   height: 42px;
   border: 2px solid rgb(131, 131, 131);
   background-color: rgb(255, 255, 255);
-  border-radius: .5em;
+  border-radius: .5rem;
   margin: 1rem .25rem;
   text-align: center;
   text-transform: lowercase;
@@ -257,6 +248,15 @@ br {
   color: rgb(0, 0, 0);
 }
 
+.link {
+  color: rgb(116, 11, 168);
+}
+
+.link:hover,
+.link:focus {
+  color: rgb(76, 7, 122);
+}
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .app-container {
     width: 740px;
@@ -298,11 +298,6 @@ br {
   }
 
   .btn {
-    width: 76%;
-  }
-
-  input[type=reset],
-  input[type=submit] {
     width: 100%;
   }
 
