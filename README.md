@@ -59,12 +59,76 @@ As a first time user I would like to see:
 - Accessible and responsive UI.
 
 #### **Returning users**
-As a returning users you I like to see:
+As a returning users I would like to see:
 - Different game content, hundreds or thousands of words.
-- Learn english grammar and phonetic.
-- Learn new words.
+- Words grammar and phonetic.
+- New words for my vocabulary.
 
 #### **Website owners**
 As an owner I would like to have:
 - Disclaimer warning the user where the content comes from.
 - Dynamic content. Not always the same words.
+
+## 4. Site Structure
+Website/App consists of four pages:
+- Home (index.html)
+- Game (game.html)
+- How to play (how-to-play.html)
+- Disclaimer (disclaimer.html)
+
+I've also added a modal (pop up) into game.html which is triggered after user submits game form every round.
+
+
+## 5. Features
+### Current features
+- How to play and Disclaimer sections.
+- Play now button, which starts the game.
+- Hint for the word displayed on top of the game and at the end of every round.
+- Phonetic displayed for game word (if it's available in the API).
+- Indexes generated randomly for every word.
+- Score of the game tracked and displayed.
+- Pop-up modal when user submits form every round.
+
+### Future features
+- I plan to implement autofocus for inputs for improving accessibility.
+- Rounds and time limit (timer and max rounds).
+- Difficulty of the game (easy mode would be max 8 characters words, hard mode would be no characters limit).
+## 6. Technologies used
+### Languages
+- HTML5
+- CSS3
+- JavaScript
+- Git
+
+### Frameworks/Libraries
+- jQuery
+
+### Software
+- Visual Studio Code
+- Adobe Photoshop
+- Balsamiq
+
+## 7. Installation, Development and Deployment
+### Installation and Development
+For installation I recommend using your own local environment like I did, using Visual Studio Code, Node.js and Yarn/Vite:
+- Clone this repository.
+- Open the cloned repository on your preferred IDE (VSC in my case).
+- Open terminal and type: ``yarn install`` (this will install all dependencies needed).
+- If you want to run it locally you can type in terminal: ``yarn dev``.
+
+### Deployment
+For deploying website, I used and recommend you use Github Pages.
+- Go to the repository you want to deploy, in this case: the one you just cloned.
+- Click on settings menu at the top-right corner of your repository page.
+- Scroll down and select 'Pages' section on left navbar.
+- Select 'master' branch.
+- Click save and this will generate URL for the hosted website (it might take a few minutes to complete it).
+
+## 8. Testing
+You can find all the testing [here](https://github.com/ricocatford/milestone-project2/blob/master/TESTING.md).
+
+## 9. Credits
+All code found in this project is written by me except these few exceptions:
+- Animation for 'floating' Logo image in Home page: This CSS animation was written by Mario Duarte. You can find it [here](https://codepen.io/MarioDesigns/pen/woJgeo).
+- Function for generating array of random numbers: This JS snippet helped me with generating random numbers I use for switching display off for some characters later on. I adapted it for my function generateHiddenCharactersIndexes(). You can find it [here](https://stackoverflow.com/questions/2380019/generate-unique-random-numbers-between-1-and-100).
+- Modal Pop-up when user submits game form: I used this modal basic example from W3Schools and adapted it. You can find it [here](https://www.w3schools.com/howto/howto_css_modals.asp).
