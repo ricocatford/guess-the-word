@@ -5,6 +5,8 @@ Guess the Word is a game where you have the hint of a word and you have to guess
 - [Random words API](https://random-word-api.vercel.app/): Used for getting random words.
 - [Free dictionary API](https://dictionaryapi.dev/): Used for retrieving word definitions and phonetics.
 
+The purpose of this game is educational, for both: the user and myself. I learned JavaScript writing my first program and also working with APIs. The user can learn a lot too, the game can help with learning new vocabulary, grammar and phonetics.
+
 ## 2. Live project
 See live project [here](https://ricocatford.github.io/milestone-project2).
 
@@ -83,11 +85,12 @@ I've also added a modal (pop up) into game.html which is triggered after user su
 ### Current features
 - How to play and Disclaimer sections.
 - Play now button, which starts the game.
-- Hint for the word displayed on top of the game and at the end of every round.
-- Phonetic displayed for game word (if it's available in the API).
+- Words retrieved dynamically through APIs.
+- Hint for the word displayed in game and at the end of every round.
+- Phonetic of the word displayed (if it's available in the API).
 - Indexes generated randomly for every word.
 - Score of the game tracked and displayed.
-- Pop-up modal when user submits form every round.
+- Pop-up modal when user submits form every round, providing feedback and updated score.
 
 ### Future features
 - I plan to implement autofocus for inputs for improving accessibility.
