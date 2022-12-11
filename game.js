@@ -5,7 +5,7 @@ let game = {
     won: 0,
     lost: 0,
     word: null,
-}
+};
 
 /**
  * Calls API for generating a set of random words.
@@ -40,10 +40,10 @@ async function checkWord(allWords) {
             && foundWordInDictionary.title != "No Definitions Found"
             && foundWordInDictionary.length > 0
         ) {
-            selectedWordDefinition = foundWordInDictionary[0];
+            let selectedWordDefinition = foundWordInDictionary[0];
             if (
                 selectedWordDefinition.word
-                && selectedWordDefinition.word.length > 2
+                && selectedWordDefinition.word.length > 3
                 && selectedWordDefinition.word.length < 9
             ) 
                 return selectedWordDefinition;
