@@ -1,5 +1,8 @@
 # Guess the Word: The Game
 ![Devices display](assets/images/readme/devices.jpg)
+
+## Table of contents
+
 ## 1. Description
 Guess the Word is a game where you have the hint of a word and you have to guess the missing characters of the word. I got inspired by childhood game 'Hangman' and also spanish TV show 'Pasapalabra'. The game is powered by two APIs and relies on them to work:
 - [Random words API](https://random-word-api.vercel.app/): Used for getting random words.
