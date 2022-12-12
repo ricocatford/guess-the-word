@@ -2,7 +2,37 @@
 ![Devices display](assets/images/readme/devices.jpg)
 
 ## Table of contents
-
+- [Guess the Word: The Game](#guess-the-word-the-game)
+  - [Table of contents](#table-of-contents)
+  - [1. Description](#1-description)
+  - [2. Live project](#2-live-project)
+  - [3. UX](#3-ux)
+    - [Design](#design)
+      - [**Colors**](#colors)
+      - [**Fonts**](#fonts)
+      - [**Icons**](#icons)
+      - [**Logo**](#logo)
+    - [Wireframes](#wireframes)
+      - [**Mobile view**](#mobile-view)
+      - [**Tablet view**](#tablet-view)
+      - [**Desktop view**](#desktop-view)
+    - [User stories](#user-stories)
+      - [**First time users**](#first-time-users)
+      - [**Returning users**](#returning-users)
+      - [**Website owners**](#website-owners)
+  - [4. Site Structure](#4-site-structure)
+  - [5. Features](#5-features)
+    - [Current features](#current-features)
+    - [Future features](#future-features)
+  - [6. Technologies used](#6-technologies-used)
+    - [Languages](#languages)
+    - [Frameworks/Libraries](#frameworkslibraries)
+    - [Software](#software)
+  - [7. Installation, Development and Deployment](#7-installation-development-and-deployment)
+    - [Installation and Development](#installation-and-development)
+    - [Deployment](#deployment)
+  - [8. Testing](#8-testing)
+  - [9. Credits](#9-credits)
 ## 1. Description
 Guess the Word is a game where you have the hint of a word and you have to guess the missing characters of the word. I got inspired by childhood game 'Hangman' and also spanish TV show 'Pasapalabra'. The game is powered by two APIs and relies on them to work:
 - [Random words API](https://random-word-api.vercel.app/): Used for getting random words.

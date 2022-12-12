@@ -1,5 +1,18 @@
 # Testing
 
+## Table of contents
+- [Testing](#testing)
+  - [Table of contents](#table-of-contents)
+  - [1. Functionality](#1-functionality)
+  - [2. Performance](#2-performance)
+    - [Mobile devices](#mobile-devices)
+    - [Desktop devices](#desktop-devices)
+  - [3. Code validation](#3-code-validation)
+    - [HTML validator](#html-validator)
+    - [CSS validator](#css-validator)
+    - [JS validator](#js-validator)
+  - [4. Bug fixes](#4-bug-fixes)
+
 ## 1. Functionality
 I've performed regular tests through out development for the usability and performance of the game. Played the game several times (more than 100 rounds) and manually tested hundreds times to see how APIs would respond to this 'flood'. No problems found with it.
 
