@@ -41,7 +41,7 @@ Guess the Word is a game where you have the hint of a word and you have to guess
 The purpose of this game is educational, for both: the user and myself. I learned JavaScript writing my first program and also working with APIs. The user can learn a lot too, the game can help with learning new vocabulary, grammar and phonetics.
 
 ## 2. Live project
-See live project [here](https://ricocatford.github.io/milestone-project2).
+See live project [here](https://ricodev.me/guess-the-word).
 
 ## 3. UX
 ### Design
